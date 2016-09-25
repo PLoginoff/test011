@@ -2,11 +2,17 @@ imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
     - { resource: services.yml }
+    - { resource: "@NewsFeedBundle/Resources/config/services.yml" }
 
 # Put parameters here that don't need to change on each machine where the app is deployed
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
+
 parameters:
     locale: en
+    article_img: '%kernel.root_dir%/../web/uploads/articles'
+    phpmailer:
+        type: fakesendmail
+        path: "%kernel.root_dir%/fakesendmail.sh %kernel.root_dir%/logs"
 
 framework:
     #esi:             ~
@@ -21,7 +27,6 @@ framework:
     #serializer:      { enable_annotations: true }
     templating:
         engines: ['twig']
-    default_locale:  "%locale%"
     trusted_hosts:   ~
     trusted_proxies: ~
     session:
@@ -29,6 +34,11 @@ framework:
         handler_id:  ~
     fragments:       ~
     http_method_override: true
+    
+    default_locale: "%locale%"
+    translator:
+        fallback:   ["%locale%"]
+        logging:    true
 
 # Twig Configuration
 twig:
@@ -57,10 +67,3 @@ doctrine:
         naming_strategy: doctrine.orm.naming_strategy.underscore
         auto_mapping: true
 
-# Swiftmailer Configuration
-swiftmailer:
-    transport: "%mailer_transport%"
-    host:      "%mailer_host%"
-    username:  "%mailer_user%"
-    password:  "%mailer_password%"
-    spool:     { type: memory }

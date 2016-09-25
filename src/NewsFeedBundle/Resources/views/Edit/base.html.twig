@@ -1,0 +1,13 @@
+{% extends "NewsFeedBundle::base.html.twig" %}
+
+{% block title %}
+    NewsFeedBundle:Edit:list
+{% endblock %}
+
+{% block body %}
+    <a class="btn btn-warning" href="{{path('edit_new')}}">
+        Добавить новость.
+    </a>
+    {% block content %}
+    {% endblock %}
+{% endblock %}

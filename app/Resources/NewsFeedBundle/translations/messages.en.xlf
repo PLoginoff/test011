@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="en" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="efc3314bee31f471019074968fdddac9" resname="news.wellcome">
+        <source>news.wellcome</source>
+        <target>Wellcome to the</target>
+      </trans-unit>
+      <trans-unit id="2c9ea88f1d675e81bd4a150356a5c54d" resname="Add article">
+        <source>Add article</source>
+        <target>__Add article</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

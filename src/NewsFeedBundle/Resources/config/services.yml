@@ -1,0 +1,4 @@
+services:
+    news_feed.phpmailer:
+        class: NewsFeedBundle\Mailer
+        arguments: ["%phpmailer%"]

@@ -1,3 +1,11 @@
-app:
-    resource: "@AppBundle/Controller/"
+news_feed:
+    resource: "@NewsFeedBundle/Controller/"
     type:     annotation
+    prefix:   /
+
+logout:
+    path: /logout
+
+registration:
+    path:     /register
+    defaults: { _controller: NewsFeedBundle:User:register }

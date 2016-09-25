@@ -1,0 +1,26 @@
+{% extends "NewsFeedBundle:Edit:base.html.twig" %}
+
+{% block title %}NewsFeedBundle:Edit:list{% endblock %}
+
+{% block content %}
+<h1>Welcome to the Edit:list page</h1>
+
+<div class="table-responsive">
+  <table class="table table-hover">
+    {% for a in list %}
+        <tr>
+            <td>{{a.id}}.</td>
+            <td><img src="{{asset(a.photo)}}"/></td>
+            <td>{{a.title}}</td>
+            <td>{{a.text}}</td> {# FIXME обрезать. Входяие все сконвертить! #}
+            <td>
+                <a class="btn btn-danger" href="{{path('edit_remove', {id:a.id})}}">
+                    Remove
+                </a>
+            </td>
+        </tr>
+    {% endfor %}
+  </table>
+</div>
+
+{% endblock %}

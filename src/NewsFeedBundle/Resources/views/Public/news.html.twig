@@ -1,0 +1,28 @@
+{% extends "NewsFeedBundle::base.html.twig" %}
+
+{% block title %}NewsFeedBundle:Public:news{% endblock %}
+
+{% block body %}
+<h1>{% trans %}news.wellcome{% endtrans %}Public:news page</h1>
+<h2><a href="{{path('edit_new')}}">[Add news]</a></h2>
+
+
+
+<div class="table-responsive">
+  <table class="table table-hover">
+    {% for a in list %}
+        <tr>
+            <td>{{a.title}}</td>
+            <td>{{a.text}}</td>
+        </tr>
+    {% endfor %}
+  </table>
+</div>
+
+
+    
+{% endblock %}
+
+
+
+
