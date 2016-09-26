@@ -6,7 +6,7 @@ use Eventviva\ImageResize;
 
 class ResizeImage
 {
-    private $filename;
+    protected $filename;
 
     public function __construct($filename)
     {
