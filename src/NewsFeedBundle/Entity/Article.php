@@ -12,7 +12,10 @@ use NewsFeedBundle\Entity\User;
 /**
  * Article
  *
- * @ORM\Table(name="article")
+ * @ORM\Table(
+ *   name="article",
+ *   indexes={@ORM\Index(name="published_idx", columns={"published"})}
+ * )
  * @ORM\Entity(repositoryClass="NewsFeedBundle\Repository\ArticleRepository")
  */
 class Article
@@ -73,6 +76,18 @@ class Article
      */
     private $published = 1;
 
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="updated", type="datetime")
+     */
+    private $updated;
+
+
+    public function __construct()
+    {
+        $this->updated = new \DateTime("now");
+    }
 
     /**
      * Get id
@@ -227,9 +242,26 @@ class Article
         return '';
     }
 
-    public function getDatetime()
+    /**
+     * Set updated
+     *
+     * @param \DateTime $updated
+     * @return Article
+     */
+    public function setUpdated($updated)
     {
-        return time();
+        $this->updated = $updated;
+
+        return $this;
     }
 
+    /**
+     * Get updated
+     *
+     * @return \DateTime 
+     */
+    public function getUpdated()
+    {
+        return $this->updated;
+    }
 }

@@ -33,7 +33,7 @@ class UserController extends Controller
             $em->flush();
 
             $mailer = $this->get('news_feed.phpmailer');
-            $mailer->setFrom('newsfeed@example.com', 'Mailer'); // FIXME
+            $mailer->setFrom($this->getParameter('email_main'));
             $mailer->addAddress($user->getEmail());
             $mailer->setSubject('Activate!');
             $mailer->setBody(

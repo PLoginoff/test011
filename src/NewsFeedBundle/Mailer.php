@@ -10,7 +10,7 @@ class Mailer
     {
         switch($params['type']) {
             case 'smtp':
-                // FIXME
+                // FIXME...
                 break;
             default:
                 $this->phpmailer = new \PHPMailer;

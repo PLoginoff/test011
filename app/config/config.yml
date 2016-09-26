@@ -10,6 +10,7 @@ imports:
 parameters:
     locale: en
     article_img: '%kernel.root_dir%/../web/uploads/articles'
+    email_main: newsfeed@example.com
     phpmailer:
         type: fakesendmail
         path: "%kernel.root_dir%/fakesendmail.sh %kernel.root_dir%/logs"

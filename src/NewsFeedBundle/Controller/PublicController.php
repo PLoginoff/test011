@@ -42,13 +42,11 @@ class PublicController extends Controller
             'article' => $article
         ]);
 
-        // FIXME set filentame!
         $dompdf = new Dompdf();
         $dompdf->loadHtml($html->getContent());
         $dompdf->render();
         $pdfoutput = $dompdf->output();
 
-        //$dompdf->stream('newsfeed_' . $article->getId() . '.pdf');
         return new Response(
             $pdfoutput,
             200,
@@ -78,12 +76,15 @@ class PublicController extends Controller
         $repo = $this->getDoctrine()->getRepository('NewsFeedBundle:Article');
         $list = $repo->getPublicList();
 
-        // FIXME
-        header('Content-Type: application/rss+xml; charset=utf-8');
-
-        return $this->render('NewsFeedBundle:Public:rss.xml.twig', array(
+        $rss = $this->render('NewsFeedBundle:Public:rss.xml.twig', array(
             'list' => $list
         ));
+
+        return new Response(
+            $rss->getContent(),
+            200,
+            array('Content-Type' => 'application/rss+xml; charset=utf-8')
+        );
     }
 
 }

@@ -13,7 +13,8 @@
             <td>{{a.id}}.</td>
             <td><img class="news-img" src="{{asset('uploads/articles/' ~ a.photo)}}"/></td>
             <td>{{a.title}}</td>
-            <td>{{a.text}}</td> {# FIXME обрезать. Входяие все сконвертить! #}
+            <td>{{a.text[:100]}}</td>
+            <td>{{a.updated|date('Y.m.d') }}</td>
             <td>
                 <a class="btn btn-danger" href="{{path('edit_remove', {id:a.id})}}">
                     Remove

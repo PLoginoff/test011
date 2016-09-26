@@ -1,20 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
-        <title>Title</title>
-        <link>http://site.url/asdfasdf</link>
-        <atom:link href="http://site.url/asdfasdf" rel="self" type="application/rss+xml" />
+        <title>NewsFeed</title>
+        <link>{{absolute_url(path('public_news'))}}</link>
+        <atom:link href="{{absolute_url(path('public_news'))}}" rel="self" type="application/rss+xml" />
         <description>globals.siteDescription</description>
         <language>en-us</language>
-        <pubDate>now.rss</pubDate>
-        <lastBuildDate>now.rss</lastBuildDate>
         {% for entry in list %}
             <item>
                 <title>{{ entry.title }}</title>
-                <link>{{ entry.url }}</link>
-                <pubDate>{{ entry.datetime }}</pubDate>
-                <author>{{ entry.user }}</author>
-                <guid>{{ entry.url }}</guid>
+                <link>{{absolute_url(path('public_view', {id: entry.id}))}}</link>
+                <guid>{{absolute_url(path('public_view', {id: entry.id}))}}</guid>
+                <pubDate>{{ entry.updated | date('r') }}</pubDate>
+                <author>{{ entry.user.email }} ({{ entry.user }})</author>
                 <description><![CDATA[
                     {{ entry.text }}
                 ]]></description>

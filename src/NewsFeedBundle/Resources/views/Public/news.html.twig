@@ -3,7 +3,7 @@
 {% block title %}NewsFeedBundle:Public:news{% endblock %}
 
 {% block body %}
-    <h1>{% trans %}news.wellcome{% endtrans %} NewsFeed</h1>
+    <h1>NewsFeed</h1>
     <div class="table-responsive">
         <table class="table table-hover">
             <thead>
@@ -11,8 +11,9 @@
                     <th>#</th>
                     <th>Img</th>
                     <th>Title</th>
-                    <th>Text</th> {# FIXME обрезать. Входяие все сконвертить! #}
+                    <th>Text</th>
                     <th>User</th>
+                    <th>Date</th>
                     <th></th>
                 </tr>
             </thead>
@@ -21,8 +22,9 @@
                     <td>{{a.id}}.</td>
                     <td><img class="news-img" src="{{asset('uploads/articles/' ~ a.photo)}}"/></td>
                     <td>{{a.title}}</td>
-                    <td>{{a.text}}</td> {# FIXME обрезать. Входяие все сконвертить! #}
+                    <td>{{a.text[:100]}}</td>
                     <td>{{a.user}}</td>
+                    <td>{{a.updated|date('Y.m.d') }}</td>
                     <td>
                         <a href="{{path('public_view', {id: a.id})}}" class="btn btn-info">View</a>
                         <a href="{{path('public_pdf',  {id: a.id})}}" class="btn btn-info">PDF</a>

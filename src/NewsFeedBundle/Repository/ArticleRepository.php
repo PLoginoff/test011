@@ -23,7 +23,7 @@ class ArticleRepository extends EntityRepository
         return $this->findBy([
             'user_id'   => $user->getId(),
             'published' => true
-        ]);
+        ], ['id' => 'desc'], 10);
     }
 
     /**
@@ -58,10 +58,9 @@ class ArticleRepository extends EntityRepository
      */
     public function getPublicList($limit = 10)
     {
-        // FIXME limit
         return $this->findBy([
             'published' => true
-        ]);
+        ], ['id' => 'desc'], 10);
     }
 
 }
