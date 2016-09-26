@@ -14,8 +14,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Table(name="user")
  * @ORM\Entity(repositoryClass="NewsFeedBundle\Repository\UserRepository")
  *
- * @UniqueEntity(fields="email",    message="Email already taken")
- *
+ * @UniqueEntity(fields="email", message="Email already taken")
  */
 class User implements AdvancedUserInterface, \Serializable
 {
@@ -84,7 +83,7 @@ class User implements AdvancedUserInterface, \Serializable
     /**
      * Set email
      *
-     * @param string $email
+     * @param  string $email
      * @return User
      */
     public function setEmail($email)
@@ -117,7 +116,7 @@ class User implements AdvancedUserInterface, \Serializable
     /**
      * Set active
      *
-     * @param boolean $active
+     * @param  boolean $active
      * @return User
      */
     public function setActive($active)
@@ -140,7 +139,7 @@ class User implements AdvancedUserInterface, \Serializable
     /**
      * Set code
      *
-     * @param string $code
+     * @param  string $code
      * @return User
      */
     public function setCode($code)
@@ -192,19 +191,25 @@ class User implements AdvancedUserInterface, \Serializable
         return $this->active;
     }
 
-    /** @see \Serializable::serialize() */
+    /**
+ * @see \Serializable::serialize() 
+*/
     public function serialize()
     {
-        return serialize(array(
+        return serialize(
+            array(
             $this->id,
             $this->email,
             $this->password,
             $this->active
             // $this->salt,
-        ));
+            )
+        );
     }
 
-    /** @see \Serializable::unserialize() */
+    /**
+ * @see \Serializable::unserialize() 
+*/
     public function unserialize($serialized)
     {
         list (

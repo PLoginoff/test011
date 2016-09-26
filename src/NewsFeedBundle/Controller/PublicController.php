@@ -19,12 +19,14 @@ class PublicController extends Controller
     {
         $repo    = $this->getDoctrine()->getRepository('NewsFeedBundle:Article');
         $article = $repo->getPublicOne($id);
-        if ( empty($article) ) {
+        if (empty($article) ) {
             throw new HttpException(404, "Article not found.");
         }
-        return $this->render('NewsFeedBundle:Public:view.html.twig', [
+        return $this->render(
+            'NewsFeedBundle:Public:view.html.twig', [
             'article' => $article
-        ]);
+            ]
+        );
     }
 
     /**
@@ -34,13 +36,15 @@ class PublicController extends Controller
     {
         $repo    = $this->getDoctrine()->getRepository('NewsFeedBundle:Article');
         $article = $repo->getPublicOne($id);
-        if ( empty($article) ) {
+        if (empty($article) ) {
             throw new HttpException(404, "Article not found.");
         }
         
-        $html = $this->render('NewsFeedBundle:Public:pdf.html.twig', [
+        $html = $this->render(
+            'NewsFeedBundle:Public:pdf.html.twig', [
             'article' => $article
-        ]);
+            ]
+        );
 
         $dompdf = new Dompdf();
         $dompdf->loadHtml($html->getContent());
@@ -63,9 +67,11 @@ class PublicController extends Controller
         $repo = $this->getDoctrine()->getRepository('NewsFeedBundle:Article');
         $list = $repo->getPublicList();
 
-        return $this->render('NewsFeedBundle:Public:news.html.twig', array(
+        return $this->render(
+            'NewsFeedBundle:Public:news.html.twig', array(
             'list' => $list
-        ));
+            )
+        );
     }
 
     /**
@@ -76,9 +82,11 @@ class PublicController extends Controller
         $repo = $this->getDoctrine()->getRepository('NewsFeedBundle:Article');
         $list = $repo->getPublicList();
 
-        $rss = $this->render('NewsFeedBundle:Public:rss.xml.twig', array(
+        $rss = $this->render(
+            'NewsFeedBundle:Public:rss.xml.twig', array(
             'list' => $list
-        ));
+            )
+        );
 
         return new Response(
             $rss->getContent(),

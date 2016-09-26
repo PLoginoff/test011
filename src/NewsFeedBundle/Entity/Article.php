@@ -50,7 +50,6 @@ class Article
      *
      * @Assert\NotBlank(message="Please, upload the image.")
      * @Assert\File(mimeTypes={"image/jpeg"})
-     * 
      */
     private $photo;
 
@@ -102,7 +101,7 @@ class Article
     /**
      * Set title
      *
-     * @param string $title
+     * @param  string $title
      * @return Article
      */
     public function setTitle($title)
@@ -125,7 +124,7 @@ class Article
     /**
      * Set text
      *
-     * @param string $text
+     * @param  string $text
      * @return Article
      */
     public function setText($text)
@@ -148,7 +147,7 @@ class Article
     /**
      * Set photo
      *
-     * @param string $photo
+     * @param  string $photo
      * @return Article
      */
     public function setPhoto($photo)
@@ -194,7 +193,7 @@ class Article
     /**
      * Set publish
      *
-     * @param boolean $published
+     * @param  boolean $published
      * @return Article
      */
     public function setPublished($published)
@@ -216,6 +215,7 @@ class Article
 
     /**
      * Get User
+     *
      * @return User
      */
     public function getUser()
@@ -226,7 +226,7 @@ class Article
     /**
      * Set User
      *
-     * @param User $user
+     * @param  User $user
      * @return Article
      */
     public function setUser(User $user)
@@ -245,7 +245,7 @@ class Article
     /**
      * Set updated
      *
-     * @param \DateTime $updated
+     * @param  \DateTime $updated
      * @return Article
      */
     public function setUpdated($updated)

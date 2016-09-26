@@ -25,10 +25,12 @@ class UserRepository extends EntityRepository implements UserLoaderInterface
 
     public function getByCode($code)
     {
-        return $this->findOneBy([
+        return $this->findOneBy(
+            [
             'code'   => $code,
             'active' => false
-        ]);
+            ]
+        );
     }
 
 

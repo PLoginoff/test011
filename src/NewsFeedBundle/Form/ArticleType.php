@@ -12,15 +12,14 @@ class ArticleType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
-     * @param array $options
+     * @param array                $options
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
             ->add('title')
             ->add('text')
-            ->add('photo', FileType::class, array('label' => 'Photo'))
-        ;
+            ->add('photo', FileType::class, array('label' => 'Photo'));
     }
     
     /**
@@ -28,8 +27,10 @@ class ArticleType extends AbstractType
      */
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(array(
+        $resolver->setDefaults(
+            array(
             'data_class' => 'NewsFeedBundle\Entity\Article'
-        ));
+            )
+        );
     }
 }

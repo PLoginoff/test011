@@ -10,10 +10,12 @@ class MailerTest extends \PHPUnit_Framework_TestCase
     public function testFakeSend()
     {
         $appDir = realpath(__DIR__."/../../../app");
-        $mailer = new Mailer([
+        $mailer = new Mailer(
+            [
             'type' => 'fakesendmail',
             'path' => "$appDir/fakesendmail.sh  $appDir/logs"
-        ]);
+            ]
+        );
 
         $message = md5(rand());
 

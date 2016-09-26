@@ -20,10 +20,12 @@ class ArticleRepository extends EntityRepository
      */
     public function getListForUser(User $user)
     {
-        return $this->findBy([
+        return $this->findBy(
+            [
             'user_id'   => $user->getId(),
             'published' => true
-        ], ['id' => 'desc'], 10);
+            ], ['id' => 'desc'], 10
+        );
     }
 
     /**
@@ -33,11 +35,13 @@ class ArticleRepository extends EntityRepository
      */
     public function getOneForUser(User $user, $id)
     {
-        return $this->findOneBy([
+        return $this->findOneBy(
+            [
             'id'        => $id,
             'user_id'   => $user->getId(),
             'published' => true
-        ]);
+            ]
+        );
     }
 
     /**
@@ -46,10 +50,12 @@ class ArticleRepository extends EntityRepository
      */
     public function getPublicOne($id)
     {
-        return $this->findOneBy([
+        return $this->findOneBy(
+            [
             'id'        => $id,
             'published' => true
-        ]);
+            ]
+        );
     }
 
     /**
@@ -58,9 +64,11 @@ class ArticleRepository extends EntityRepository
      */
     public function getPublicList($limit = 10)
     {
-        return $this->findBy([
+        return $this->findBy(
+            [
             'published' => true
-        ], ['id' => 'desc'], 10);
+            ], ['id' => 'desc'], 10
+        );
     }
 
 }

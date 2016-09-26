@@ -23,9 +23,11 @@ class EditController extends Controller
         $repo = $this->getDoctrine()->getRepository('NewsFeedBundle:Article');
         $list = $repo->getListForUser($this->getUser());
 
-        return $this->render('NewsFeedBundle:Edit:list.html.twig', [
+        return $this->render(
+            'NewsFeedBundle:Edit:list.html.twig', [
             'list' => $list
-        ]);
+            ]
+        );
     }
 
     /**
@@ -40,7 +42,9 @@ class EditController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $article->setUser($this->getUser());
 
-            /** @var Symfony\Component\HttpFoundation\File\UploadedFile $file */
+            /**
+ * @var Symfony\Component\HttpFoundation\File\UploadedFile $file 
+*/
             $file = $article->getPhoto();
             $fileName = md5(uniqid()).'.jpg';
 
@@ -64,9 +68,11 @@ class EditController extends Controller
             return $this->redirectToRoute('edit_list');
         }
 
-        return $this->render('NewsFeedBundle:Edit:new.html.twig', array(
+        return $this->render(
+            'NewsFeedBundle:Edit:new.html.twig', array(
             'form' => $form->createView()
-        ));
+            )
+        );
     }
 
 
@@ -77,7 +83,7 @@ class EditController extends Controller
     {
         $repo = $this->getDoctrine()->getRepository('NewsFeedBundle:Article');
         $article  = $repo->getOneForUser($this->getUser(), $id);
-        if ( ! $article ) {
+        if (! $article ) {
             throw new HttpException(404, "Not found article.");
         } else {
             $article->setPublished(false);

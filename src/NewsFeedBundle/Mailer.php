@@ -9,13 +9,13 @@ class Mailer
     public function __construct($params)
     {
         switch($params['type']) {
-            case 'smtp':
-                // FIXME...
-                break;
-            default:
-                $this->phpmailer = new \PHPMailer;
-                $this->phpmailer->isSendmail();
-                $this->phpmailer->Sendmail = $params['path'];
+        case 'smtp':
+            // FIXME...
+            break;
+        default:
+            $this->phpmailer = new \PHPMailer;
+            $this->phpmailer->isSendmail();
+            $this->phpmailer->Sendmail = $params['path'];
 
         }
 
@@ -23,7 +23,7 @@ class Mailer
 
     public function __call($name, $arguments)
     {
-        return call_user_func_array(array($this->phpmailer, $name), $arguments);
+        return call_user_func_array([$this->phpmailer, $name], $arguments);
     }
 
     public function setSubject($subject)
@@ -38,7 +38,7 @@ class Mailer
 
     public function send()
     {
-        if ( $this->phpmailer->send() ) {
+        if ($this->phpmailer->send() ) {
             return true;
         } else {
             throw new \Exception($this->phpmailer->ErrorInfo);

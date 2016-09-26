@@ -39,15 +39,15 @@ class UserController extends Controller
             $mailer->setBody(
                 "Your activation link: \n".
                 $this->generateUrl('activate', ['code' => $user->getCode()], 0)
-                );
+            );
             $mailer->send();
     
             return $this->redirectToRoute('activate_me');
         }
 
         return $this->render(
-                'NewsFeedBundle:User:register.html.twig',
-                array('form' => $form->createView())
+            'NewsFeedBundle:User:register.html.twig',
+            array('form' => $form->createView())
         );
     }
 
@@ -57,10 +57,10 @@ class UserController extends Controller
      */
     public function activateAction($code=null)
     {
-        if ( $code ) {
+        if ($code ) {
             $repo = $this->getDoctrine()->getRepository('NewsFeedBundle:User');
             $user = $repo->getByCode($code);
-            if ( ! $user ) {
+            if (! $user ) {
                 throw new HttpException(404, "Not found code!");                
             }
             $user->setActive(true);
@@ -78,7 +78,7 @@ class UserController extends Controller
         }
 
         return $this->render(
-                'NewsFeedBundle:User:activate.html.twig'
+            'NewsFeedBundle:User:activate.html.twig'
         );
     }
 
@@ -104,8 +104,8 @@ class UserController extends Controller
         }
 
         return $this->render(
-                'NewsFeedBundle:User:password.html.twig',
-                array('form' => $form->createView())
+            'NewsFeedBundle:User:password.html.twig',
+            array('form' => $form->createView())
         );
     }
 
@@ -123,11 +123,13 @@ class UserController extends Controller
         // last username entered by the user
         $lastUsername = $authenticationUtils->getLastUsername();
 
-        return $this->render('NewsFeedBundle:User:login.html.twig',
-                array(
+        return $this->render(
+            'NewsFeedBundle:User:login.html.twig',
+            array(
                 'last_username' => $lastUsername,
                 'error' => $error,
-        ));
+            )
+        );
     }
 
 
