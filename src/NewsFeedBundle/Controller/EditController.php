@@ -9,7 +9,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use NewsFeedBundle\Entity\Article;
 use NewsFeedBundle\Form\ArticleType;
 
-use NewsFeedBundle\Model\ResizeImage;
+use NewsFeedBundle\ResizeImage;
 
 use Symfony\Component\HttpKernel\Exception\HttpException;
 
@@ -38,8 +38,7 @@ class EditController extends Controller
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            // FIXME Real user
-            $article->setUserId($this->getUser()->getId());
+            $article->setUser($this->getUser());
 
             /** @var Symfony\Component\HttpFoundation\File\UploadedFile $file */
             $file = $article->getPhoto();
@@ -53,7 +52,6 @@ class EditController extends Controller
             $dir  = $this->getParameter('article_img');
             $full = $dir . '/' . $fileName;
 
-            // TODO exeptions...
             $resizer = new ResizeImage($full);
             $resizer->resize(100, 100);
 
@@ -89,11 +87,6 @@ class EditController extends Controller
         }
         return $this->redirectToRoute('edit_list');
     }
-
-
-
-
-
 
 
 }

@@ -1,23 +1,22 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="utf-8"?>
 <rss version="2.0">
     <channel>
-        <title>{{ siteName }}</title>
-        <link>{{ siteUrl }}</link>
-        <atom:link href="{{ craft.request.url }}" rel="self" type="application/rss+xml" />
-        <description>{{ globals.siteDescription }}</description>
+        <title>Title</title>
+        <link>http://site.url/asdfasdf</link>
+        <atom:link href="http://site.url/asdfasdf" rel="self" type="application/rss+xml" />
+        <description>globals.siteDescription</description>
         <language>en-us</language>
-        <pubDate>{{ now.rss }}</pubDate>
-        <lastBuildDate>{{ now.rss }}</lastBuildDate>
-
-        {% for entry in craft.entries.find() %}
+        <pubDate>now.rss</pubDate>
+        <lastBuildDate>now.rss</lastBuildDate>
+        {% for entry in list %}
             <item>
                 <title>{{ entry.title }}</title>
                 <link>{{ entry.url }}</link>
-                <pubDate>{{ entry.postDate.rss }}</pubDate>
-                <author>{{ entry.author }}</author>
+                <pubDate>{{ entry.datetime }}</pubDate>
+                <author>{{ entry.user }}</author>
                 <guid>{{ entry.url }}</guid>
                 <description><![CDATA[
-                    {{ entry.body }}
+                    {{ entry.text }}
                 ]]></description>
             </item>
         {% endfor %}

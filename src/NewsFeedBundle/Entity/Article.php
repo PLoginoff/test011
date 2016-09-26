@@ -6,6 +6,9 @@ use Doctrine\ORM\Mapping as ORM;
 
 use Symfony\Component\Validator\Constraints as Assert;
 
+use NewsFeedBundle\Entity\User;
+
+
 /**
  * Article
  *
@@ -54,6 +57,14 @@ class Article
      * @ORM\Column(name="user_id", type="integer")
      */
     private $user_id;
+
+    /**
+     * @var User
+     *
+     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     */
+    private $user;
 
     /**
      * @var bool
@@ -187,4 +198,38 @@ class Article
     {
         return $this->published;
     }
+
+    /**
+     * Get User
+     * @return User
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * Set User
+     *
+     * @param User $user
+     * @return Article
+     */
+    public function setUser(User $user)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+
+    public function getUrl()
+    {
+        return '';
+    }
+
+    public function getDatetime()
+    {
+        return time();
+    }
+
 }

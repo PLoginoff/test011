@@ -1,16 +1,32 @@
 {% extends "NewsFeedBundle::base.html.twig" %}
+{% block subject %}Please sing in.{% endblock %}
+
+
 {% block body %}
     {% if error %}
         <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
     {% endif %}
 
-    <form action="{{ path('login') }}" method="post">
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="_username" value="{{ last_username }}" />
+    <form action="{{ path('login') }}" method="post" class="form-inline">
+        <div class="form-group">
 
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="_password" />
+            <input type="text" id="username" name="_username" value="{{ last_username }}" class="form-control" placeholder="Email"/>
+        </div>
 
-        <button type="submit">login</button>
+        <div class="form-group">
+
+
+            <input type="password" id="password" name="_password" class="form-control" placeholder="Password" />
+        </div>
+
+        <button type="submit"  class="btn btn-success">Login</button>
     </form>
+
+        <hr />
+    <div>
+        Or you can register now:
+        <br />
+        <a href="{{path('register')}}" class="btn btn-info">Sing Up</a>
+    </div>
+
 {% endblock %}

@@ -1,6 +1,6 @@
 <?php
 
-namespace NewsFeedBundle\Model;
+namespace NewsFeedBundle;
 
 use Eventviva\ImageResize;
 
@@ -16,7 +16,8 @@ class ResizeImage
     public function resize($width = 100, $height = 100)
     {
         $image = new ImageResize($this->filename);
-        $image->resize($width, $height);
+        $image->resizeToWidth($width);
+        $image->crop($width, $height);
         return $image->save($this->filename);
     }
 }

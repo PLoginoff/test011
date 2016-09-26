@@ -33,13 +33,12 @@ class UserController extends Controller
             $em->flush();
 
             $mailer = $this->get('news_feed.phpmailer');
-            $mailer->setFrom('fixme@example.com', 'Mailer');
+            $mailer->setFrom('newsfeed@example.com', 'Mailer'); // FIXME
             $mailer->addAddress($user->getEmail());
-            $mailer->setSubject('Here is the subject');
+            $mailer->setSubject('Activate!');
             $mailer->setBody(
                 "Your activation link: \n".
-                $this->generateUrl('activate', ['code' => $user->getCode()]) . "\n" .
-                "--\n"
+                $this->generateUrl('activate', ['code' => $user->getCode()], 0)
                 );
             $mailer->send();
     

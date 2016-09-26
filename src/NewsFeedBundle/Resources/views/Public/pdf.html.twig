@@ -1,7 +1,19 @@
 {# it's only for PDF output #}
-<style>
-    
-    
-</style>
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
 
-<h1>{{article.title}}</h1>
+        </style>
+    </head>
+    <body>
+        <h1>{{article.title}} by {{article.user}}</h1>
+        <p>
+            <img src="uploads/articles/{{article.photo}}"/>
+            {{article.text}}
+        </p>
+    </body>
+</html>

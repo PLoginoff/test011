@@ -169,7 +169,7 @@ class User implements AdvancedUserInterface, \Serializable
 
     public function getUsername()
     {
-        return $this->email;
+        return preg_replace('/@.+/', '', $this->email);
     }
 
     public function getRoles()
@@ -246,4 +246,18 @@ class User implements AdvancedUserInterface, \Serializable
     {
         return true;
     }
+
+
+    /**
+     * 
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->getUsername();
+    }
+
+
+
+
 }

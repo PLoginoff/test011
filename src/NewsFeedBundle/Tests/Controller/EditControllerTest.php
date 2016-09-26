@@ -6,18 +6,14 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 class EditControllerTest extends WebTestCase
 {
-    public function testList()
+
+    public function testSmoke()
     {
+        $urls = ['/edit/list', '/edit/new'];
         $client = static::createClient();
-
-        $crawler = $client->request('GET', '/list');
+        foreach ($urls as $url) {
+            $client->request('GET', $url);
+            $this->assertTrue($client->getResponse()->isRedirection());
+        }
     }
-
-    public function testNew()
-    {
-        $client = static::createClient();
-
-        $crawler = $client->request('GET', '/new');
-    }
-
 }

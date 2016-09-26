@@ -1,10 +1,11 @@
 {% extends "NewsFeedBundle::base.html.twig" %}
 
-{% block title %}NewsFeedBundle:Public:view{% endblock %}
+{% block subject %}View{% endblock %}
 
 {% block body %}
-<h1>Welcome to the Public:view page</h1>
-
-{{article.title}}
-
+        <h1>{{article.title}} by {{article.user}}</h1>
+        <p>
+            <img src="{{asset('uploads/articles/' ~ article.photo)}}"/>
+            {{article.text}}
+        </p>
 {% endblock %}

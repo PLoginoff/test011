@@ -1,15 +1,133 @@
+{% trans_default_domain "message" %}
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
     <head>
-        <meta charset="UTF-8" />
+
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <link href="/feed" rel="alternate" type="application/rss+xml" title="NewsFeed" />        
+        
         <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}
+
+        <!-- Bootstrap Core CSS -->
         <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}" />
+        {% block stylesheets %}
         {% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <!-- Custom CSS -->
+
+        <style>
+            body {
+                padding-top: 70px;
+            }
+            footer {
+                margin: 50px 0;
+            }
+            .news-img {
+                width: 75px;
+                height: 75px;
+                border-radius: 3px;
+            }
+        </style>
+
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
     </head>
+
     <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
-    </body>
+
+        <!-- Navigation -->
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="container">
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a href="{{path('public_news')}}">Home</a>
+                        </li>
+                        <li>
+                            <a href="{{path('public_feed')}}">RSS Feed</a>
+                        </li>
+                        <li>
+                            <a href="{{path('edit_list')}}">Edit</a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- /.navbar-collapse -->
+            </div>
+            <!-- /.container -->
+        </nav>
+
+        <!-- Page Content -->
+        <div class="container">
+
+            <!-- Page Heading -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">
+                        <small>{% block subject %}{% endblock %}</small>
+                    </h1>
+                </div>
+            </div>
+            <!-- /.row -->
+            <div class="row">
+            {% block body %}{% endblock %}
+        </div>
+    </div>
+        
+    <hr>
+
+    <!-- Footer -->
+    <footer>
+        <div class="row">
+            <div class="col-lg-12">
+                <p>Crossover / 2016</p>
+            </div>
+        </div>
+        <!-- /.row -->
+    </footer>
+
+</div>
+<!-- /.container -->
+
+{% block javascripts %}{% endblock %}
+
+</body>
+
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
