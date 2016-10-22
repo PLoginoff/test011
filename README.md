@@ -1,4 +1,4 @@
-See [Objective.pdf](//github.com/PLoginoff/test011/blob/master/Objective.pdf)
+See full [Objective.pdf](//github.com/PLoginoff/test011/blob/master/Objective.pdf)
 
 ```bash
 $ composer install
