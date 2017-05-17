@@ -8,7 +8,6 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 use NewsFeedBundle\Entity\User;
 
-
 /**
  * Article
  *
@@ -91,7 +90,7 @@ class Article
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -114,7 +113,7 @@ class Article
     /**
      * Get title
      *
-     * @return string 
+     * @return string
      */
     public function getTitle()
     {
@@ -137,7 +136,7 @@ class Article
     /**
      * Get text
      *
-     * @return string 
+     * @return string
      */
     public function getText()
     {
@@ -160,7 +159,7 @@ class Article
     /**
      * Get photo
      *
-     * @return string 
+     * @return string
      */
     public function getPhoto()
     {
@@ -206,7 +205,7 @@ class Article
     /**
      * Get publish
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getPublished()
     {
@@ -258,7 +257,7 @@ class Article
     /**
      * Get updated
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getUpdated()
     {

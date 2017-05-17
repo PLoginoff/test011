@@ -26,9 +26,9 @@ class RegisterType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(
-            array(
+            [
             'data_class' => 'NewsFeedBundle\Entity\User'
-            )
+            ]
         );
     }
 }

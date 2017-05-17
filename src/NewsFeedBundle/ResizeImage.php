@@ -45,7 +45,7 @@ class ResizeImage
      *
      * @param int $width  Width
      * @param int $height Height
-     * 
+     *
      * @return boolena
      */
     public function resize($width = 100, $height = 100)

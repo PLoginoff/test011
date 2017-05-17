@@ -36,5 +36,4 @@ class PublicControllerTest extends WebTestCase
         $client->request('GET', '/pdf/1');
         $this->assertTrue($client->getResponse()->isSuccessful());
     }
-
 }

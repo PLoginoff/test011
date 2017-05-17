@@ -32,6 +32,4 @@ class UserRepository extends EntityRepository implements UserLoaderInterface
             ]
         );
     }
-
-
 }

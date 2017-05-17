@@ -19,7 +19,7 @@ class ArticleType extends AbstractType
         $builder
             ->add('title')
             ->add('text')
-            ->add('photo', FileType::class, array('label' => 'Photo'));
+            ->add('photo', FileType::class, ['label' => 'Photo']);
     }
     
     /**
@@ -28,9 +28,9 @@ class ArticleType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(
-            array(
+            [
             'data_class' => 'NewsFeedBundle\Entity\Article'
-            )
+            ]
         );
     }
 }

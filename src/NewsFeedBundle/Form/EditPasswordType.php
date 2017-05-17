@@ -21,7 +21,8 @@ class EditPasswordType extends AbstractType
     {
         $builder
             ->add(
-                'plainPassword', RepeatedType::class,
+                'plainPassword',
+                RepeatedType::class,
                 [
                 'type' => PasswordType::class,
                 'first_options' => ['label' => 'Password'],
@@ -37,9 +38,9 @@ class EditPasswordType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(
-            array(
+            [
                 'data_class' => 'NewsFeedBundle\Entity\User'
-            )
+            ]
         );
     }
 }

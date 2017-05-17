@@ -28,6 +28,6 @@ class MailerTest extends \PHPUnit_Framework_TestCase
         $logFile = "$appDir/logs/fakesendmail.log";
         $line    = trim(`tail -n 1 $logFile`);
 
-        $this->assertEquals($message,  $line);
+        $this->assertEquals($message, $line);
     }
 }

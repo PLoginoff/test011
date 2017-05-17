@@ -8,17 +8,15 @@ class Mailer
 
     public function __construct($params)
     {
-        switch($params['type']) {
-        case 'smtp':
-            // FIXME...
-            break;
-        default:
-            $this->phpmailer = new \PHPMailer;
-            $this->phpmailer->isSendmail();
-            $this->phpmailer->Sendmail = $params['path'];
-
+        switch ($params['type']) {
+            case 'smtp':
+                // FIXME...
+                break;
+            default:
+                $this->phpmailer = new \PHPMailer;
+                $this->phpmailer->isSendmail();
+                $this->phpmailer->Sendmail = $params['path'];
         }
-
     }
 
     public function __call($name, $arguments)
@@ -38,11 +36,10 @@ class Mailer
 
     public function send()
     {
-        if ($this->phpmailer->send() ) {
+        if ($this->phpmailer->send()) {
             return true;
         } else {
             throw new \Exception($this->phpmailer->ErrorInfo);
         }
     }
-
 }

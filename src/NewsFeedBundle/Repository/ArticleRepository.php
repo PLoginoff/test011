@@ -24,7 +24,9 @@ class ArticleRepository extends EntityRepository
             [
             'user_id'   => $user->getId(),
             'published' => true
-            ], ['id' => 'desc'], 10
+            ],
+            ['id' => 'desc'],
+            10
         );
     }
 
@@ -67,8 +69,9 @@ class ArticleRepository extends EntityRepository
         return $this->findBy(
             [
             'published' => true
-            ], ['id' => 'desc'], 10
+            ],
+            ['id' => 'desc'],
+            10
         );
     }
-
 }

@@ -63,7 +63,7 @@ class User implements AdvancedUserInterface, \Serializable
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -73,7 +73,7 @@ class User implements AdvancedUserInterface, \Serializable
     /**
      * Get name
      *
-     * @return string 
+     * @return string
      */
     public function getName()
     {
@@ -96,7 +96,7 @@ class User implements AdvancedUserInterface, \Serializable
     /**
      * Get email
      *
-     * @return string 
+     * @return string
      */
     public function getEmail()
     {
@@ -129,7 +129,7 @@ class User implements AdvancedUserInterface, \Serializable
     /**
      * Get active
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getActive()
     {
@@ -159,7 +159,7 @@ class User implements AdvancedUserInterface, \Serializable
     /**
      * Get code
      *
-     * @return string 
+     * @return string
      */
     public function getCode()
     {
@@ -173,12 +173,11 @@ class User implements AdvancedUserInterface, \Serializable
 
     public function getRoles()
     {
-        return array('ROLE_USER');
+        return ['ROLE_USER'];
     }
 
     public function eraseCredentials()
     {
-
     }
 
     public function getSalt()
@@ -192,23 +191,23 @@ class User implements AdvancedUserInterface, \Serializable
     }
 
     /**
- * @see \Serializable::serialize() 
+ * @see \Serializable::serialize()
 */
     public function serialize()
     {
         return serialize(
-            array(
+            [
             $this->id,
             $this->email,
             $this->password,
             $this->active
             // $this->salt,
-            )
+            ]
         );
     }
 
     /**
- * @see \Serializable::unserialize() 
+ * @see \Serializable::unserialize()
 */
     public function unserialize($serialized)
     {
@@ -254,15 +253,11 @@ class User implements AdvancedUserInterface, \Serializable
 
 
     /**
-     * 
+     *
      * @return string
      */
     public function __toString()
     {
         return $this->getUsername();
     }
-
-
-
-
 }

@@ -22,7 +22,7 @@ class ResizeImageTest extends \PHPUnit_Framework_TestCase
 
         $info = getimagesize($test);
         
-        $this->assertEquals($data['width'],  $info[0]);
+        $this->assertEquals($data['width'], $info[0]);
         $this->assertEquals($data['height'], $info[1]);
 
         \unlink($test);

@@ -25,7 +25,6 @@ class UserController extends Controller
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-
             $user->generateCode();
 
             $em = $this->getDoctrine()->getManager();
@@ -47,7 +46,7 @@ class UserController extends Controller
 
         return $this->render(
             'NewsFeedBundle:User:register.html.twig',
-            array('form' => $form->createView())
+            ['form' => $form->createView()]
         );
     }
 
@@ -55,13 +54,13 @@ class UserController extends Controller
      * @Route("/activate/{code}", name="activate")
      * @Route("/activate",        name="activate_me")
      */
-    public function activateAction($code=null)
+    public function activateAction($code = null)
     {
-        if ($code ) {
+        if ($code) {
             $repo = $this->getDoctrine()->getRepository('NewsFeedBundle:User');
             $user = $repo->getByCode($code);
-            if (! $user ) {
-                throw new HttpException(404, "Not found code!");                
+            if (! $user) {
+                throw new HttpException(404, "Not found code!");
             }
             $user->setActive(true);
             $user->setCode(null);
@@ -105,7 +104,7 @@ class UserController extends Controller
 
         return $this->render(
             'NewsFeedBundle:User:password.html.twig',
-            array('form' => $form->createView())
+            ['form' => $form->createView()]
         );
     }
 
@@ -125,14 +124,10 @@ class UserController extends Controller
 
         return $this->render(
             'NewsFeedBundle:User:login.html.twig',
-            array(
+            [
                 'last_username' => $lastUsername,
                 'error' => $error,
-            )
+            ]
         );
     }
-
-
-
-
 }

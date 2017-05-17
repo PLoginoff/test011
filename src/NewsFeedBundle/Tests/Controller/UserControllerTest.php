@@ -22,5 +22,4 @@ class UserControllerTest extends WebTestCase
         $client->request('GET', '/password');
         $this->assertTrue($client->getResponse()->isRedirection());
     }
-
 }

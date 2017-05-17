@@ -9,7 +9,6 @@ use Symfony\Component\HttpKernel\Exception\HttpException;
 use Dompdf\Dompdf;
 use Symfony\Component\HttpFoundation\Response;
 
-
 class PublicController extends Controller
 {
     /**
@@ -19,11 +18,12 @@ class PublicController extends Controller
     {
         $repo    = $this->getDoctrine()->getRepository('NewsFeedBundle:Article');
         $article = $repo->getPublicOne($id);
-        if (empty($article) ) {
+        if (empty($article)) {
             throw new HttpException(404, "Article not found.");
         }
         return $this->render(
-            'NewsFeedBundle:Public:view.html.twig', [
+            'NewsFeedBundle:Public:view.html.twig',
+            [
             'article' => $article
             ]
         );
@@ -36,12 +36,13 @@ class PublicController extends Controller
     {
         $repo    = $this->getDoctrine()->getRepository('NewsFeedBundle:Article');
         $article = $repo->getPublicOne($id);
-        if (empty($article) ) {
+        if (empty($article)) {
             throw new HttpException(404, "Article not found.");
         }
         
         $html = $this->render(
-            'NewsFeedBundle:Public:pdf.html.twig', [
+            'NewsFeedBundle:Public:pdf.html.twig',
+            [
             'article' => $article
             ]
         );
@@ -54,7 +55,7 @@ class PublicController extends Controller
         return new Response(
             $pdfoutput,
             200,
-            array('Content-Type' => 'application/pdf')
+            ['Content-Type' => 'application/pdf']
         );
     }
 
@@ -68,9 +69,10 @@ class PublicController extends Controller
         $list = $repo->getPublicList();
 
         return $this->render(
-            'NewsFeedBundle:Public:news.html.twig', array(
+            'NewsFeedBundle:Public:news.html.twig',
+            [
             'list' => $list
-            )
+            ]
         );
     }
 
@@ -83,16 +85,16 @@ class PublicController extends Controller
         $list = $repo->getPublicList();
 
         $rss = $this->render(
-            'NewsFeedBundle:Public:rss.xml.twig', array(
+            'NewsFeedBundle:Public:rss.xml.twig',
+            [
             'list' => $list
-            )
+            ]
         );
 
         return new Response(
             $rss->getContent(),
             200,
-            array('Content-Type' => 'application/rss+xml; charset=utf-8')
+            ['Content-Type' => 'application/rss+xml; charset=utf-8']
         );
     }
-
 }
