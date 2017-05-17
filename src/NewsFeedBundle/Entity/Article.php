@@ -54,7 +54,7 @@ class Article
 
     /**
      * @var int
-     *
+     * fixme!
      * @ORM\Column(name="user_id", type="integer")
      */
     private $user_id;
