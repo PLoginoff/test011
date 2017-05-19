@@ -53,13 +53,6 @@ class Article
     private $photo;
 
     /**
-     * @var int
-     * fixme!
-     * @ORM\Column(name="user_id", type="integer")
-     */
-    private $user_id;
-
-    /**
      * @var User
      *
      * @ORM\ManyToOne(targetEntity="User")
@@ -164,29 +157,6 @@ class Article
     public function getPhoto()
     {
         return $this->photo;
-    }
-
-    /**
-     * Set user
-     *
-     * @param  int $user_id
-     * @return Article
-     */
-    public function setUserId($user_id)
-    {
-        $this->user_id = $user_id;
-
-        return $this;
-    }
-
-    /**
-     * Get user
-     *
-     * @return int
-     */
-    public function getUserId()
-    {
-        return $this->user_id;
     }
 
     /**

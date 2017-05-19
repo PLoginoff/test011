@@ -43,9 +43,6 @@ class EditController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $article->setUser($this->getUser());
 
-            /**
- * @var Symfony\Component\HttpFoundation\File\UploadedFile $file
-*/
             $file = $article->getPhoto();
             $fileName = md5(uniqid()).'.jpg';
 

@@ -22,7 +22,7 @@ class ArticleRepository extends EntityRepository
     {
         return $this->findBy(
             [
-            'user_id'   => $user->getId(),
+            'user'      => $user,
             'published' => true
             ],
             ['id' => 'desc'],
@@ -40,7 +40,7 @@ class ArticleRepository extends EntityRepository
         return $this->findOneBy(
             [
             'id'        => $id,
-            'user_id'   => $user->getId(),
+            'user'      => $user,
             'published' => true
             ]
         );
